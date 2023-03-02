@@ -36,12 +36,17 @@ class _HomePageState extends State<HomePage> {
   FirebaseFirestore dataUserFuture = FirebaseFirestore.instance;
   UsuarioGastos usrgst = UsuarioGastos(
       cleaningAmount: 0,
+      cleaningDescription: "",
       foodAmount: 0,
+      foodDescription: "",
       idexp: "",
       studyAmount: 0,
+      studyDescription: "",
       totalAmount: 0,
       transportAmount: 0,
-      variousAmount: 0);
+      transportDescription: "",
+      variousAmount: 0,
+      variousDescription: "");
   @override
   void initState() {
     super.initState();
@@ -58,12 +63,17 @@ class _HomePageState extends State<HomePage> {
     _editParamGastos(String type, String newValue) {
       UsuarioGastos gst = UsuarioGastos(
           cleaningAmount: 0,
+          cleaningDescription: "",
           foodAmount: 0,
+          foodDescription: "",
           idexp: "",
           studyAmount: 0,
+          studyDescription: "",
           totalAmount: 0,
           transportAmount: 0,
-          variousAmount: 0);
+          transportDescription: "",
+          variousAmount: 0,
+          variousDescription: "");
       (type == "limpieza")
           ? gst.cleaningAmount = num.parse(newValue)
           : (type == "comida")
@@ -106,31 +116,126 @@ class _HomePageState extends State<HomePage> {
                                   : {});
     }
 
-    TextEditingController _controllers = TextEditingController();
+    _editDescriptionGastos(String type, String newValue) {
+      UsuarioGastos gst = UsuarioGastos(
+          cleaningAmount: 0,
+          cleaningDescription: "",
+          foodAmount: 0,
+          foodDescription: "",
+          idexp: "",
+          studyAmount: 0,
+          studyDescription: "",
+          totalAmount: 0,
+          transportAmount: 0,
+          transportDescription: "",
+          variousAmount: 0,
+          variousDescription: "");
+      (type == "limpieza")
+          ? gst.cleaningDescription = newValue
+          : (type == "comida")
+              ? gst.foodDescription = newValue
+              : (type == "estudio")
+                  ? gst.studyDescription = newValue
+                  : (type == "transporte")
+                      ? gst.transportDescription = newValue
+                      : (type == "varios")
+                          ? gst.variousDescription = newValue
+                          : gst.totalAmount;
+      clientegastos
+          .doc("exp" + mainProvider.token + yeardata)
+          .update((type == "limpieza")
+              ? {
+                  'user_cleaningDescription': num.parse(newValue),
+                }
+              : (type == "comida")
+                  ? {
+                      'user_foodDescription': num.parse(newValue),
+                    }
+                  : (type == "estudio")
+                      ? {
+                          'user_studyDescription': num.parse(newValue),
+                        }
+                      : (type == "transporte")
+                          ? {
+                              'user_transportDescription': num.parse(newValue),
+                            }
+                          : (type == "varios")
+                              ? {
+                                  'user_variousDescription':
+                                      num.parse(newValue),
+                                }
+                              : {});
+    }
 
+    TextEditingController _amountcontroller = TextEditingController();
+    TextEditingController _descriptioncontroller = TextEditingController();
     _alertDialog(String type, TextEditingController controller) {
       DialogUtils.showAlertWithCustomActions(context, "", [
         (type != "reporte")
-            ? TextFormField(
-                decoration:
-                    InputDecoration(labelText: "Agrege un nuevo monto a $type"),
-                controller: _controllers,
-                keyboardType: TextInputType.number,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.allow(
-                      RegExp(r'^[1-9][\.\d]*(,\d+)?$')),
+            ? Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          labelText: "Agrege un nuevo monto a $type"),
+                      controller: _amountcontroller,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(
+                            RegExp(r'^[1-9][\.\d]*(,\d+)?$')),
+                      ],
+                      onTap: () {
+                        _amountcontroller.clear();
+                      },
+                      onChanged: (value) {
+                         setState(() {
+                          if (type != "reporte" && value != "") {
+                            _editDescriptionGastos(type, value);
+                          }
+                        });
+                      },
+                      onFieldSubmitted: (newValue) {
+                        setState(() {
+                          if (type != "reporte" && newValue != "") {
+                            _editParamGastos(type, newValue);
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          labelText: "Agrege una descriptiocn para $type"),
+                      controller: _descriptioncontroller,
+                      keyboardType: TextInputType.multiline,
+                      onTap: () {
+                        _descriptioncontroller.clear();
+                      },
+                      onChanged: (newValue){
+                         setState(() {
+                          if (type != "reporte" && newValue != "") {
+                            _editDescriptionGastos(type, newValue);
+                          }
+                        });
+                      },
+                      onFieldSubmitted: (newValue) {
+                        setState(() {
+                          if (type != "reporte" && newValue != "") {
+                            _editDescriptionGastos(type, newValue);
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                  OutlinedButton(
+                      onPressed: () {
+                        Navigator.pop(context, 'OK');
+                      },
+                      child: Text("Enviar"))
                 ],
-                onTap: () {
-                  _controllers.clear();
-                },
-                onFieldSubmitted: (newValue) {
-                  setState(() {
-                    if (type != "reporte") {
-                      _editParamGastos(type, newValue);
-                      Navigator.pop(context, 'OK');
-                    }
-                  });
-                },
               )
             : Row(
                 children: [
@@ -290,6 +395,10 @@ class _HomePageState extends State<HomePage> {
                                     },
                                     leading: Icon(Icons.wash),
                                     title: const Text("Limpieza"),
+                                    subtitle: Text(
+                                        (usrgst.cleaningDescription != "")
+                                            ? usrgst.cleaningDescription
+                                            : "Sin Descipcion"),
                                     trailing: Text(
                                         gasto.cleaningAmount.toString(),
                                         style: Theme.of(context)
@@ -306,6 +415,10 @@ class _HomePageState extends State<HomePage> {
                                     },
                                     leading: Icon(Icons.food_bank),
                                     title: const Text("Comida"),
+                                    subtitle: Text(
+                                        (usrgst.foodDescription != "")
+                                            ? usrgst.foodDescription
+                                            : "Sin Descipcion"),
                                     trailing: Text(gasto.foodAmount.toString(),
                                         style: Theme.of(context)
                                             .textTheme
@@ -321,6 +434,10 @@ class _HomePageState extends State<HomePage> {
                                     },
                                     leading: Icon(Icons.book),
                                     title: const Text("Estudios"),
+                                    subtitle: Text(
+                                        (usrgst.studyDescription != "")
+                                            ? usrgst.studyDescription
+                                            : "Sin Descipcion"),
                                     trailing: Text(gasto.studyAmount.toString(),
                                         style: Theme.of(context)
                                             .textTheme
@@ -336,6 +453,10 @@ class _HomePageState extends State<HomePage> {
                                     },
                                     leading: Icon(Icons.bus_alert),
                                     title: const Text("Transporte"),
+                                    subtitle: Text(
+                                        (usrgst.transportDescription != "")
+                                            ? usrgst.transportDescription
+                                            : "Sin Descipcion"),
                                     trailing: Text(
                                         gasto.transportAmount.toString(),
                                         style: Theme.of(context)
@@ -352,6 +473,10 @@ class _HomePageState extends State<HomePage> {
                                     },
                                     leading: Icon(Icons.festival),
                                     title: const Text("Varios"),
+                                    subtitle: Text(
+                                        (usrgst.variousDescription != "")
+                                            ? usrgst.variousDescription
+                                            : "Sin Descipcion"),
                                     trailing: Text(
                                         gasto.variousAmount.toString(),
                                         style: Theme.of(context)

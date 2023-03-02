@@ -95,12 +95,17 @@ class AuthServices {
     Usuario usr = Usuario(correo: email, id: "", name: "", phone: "");
     UsuarioGastos usrgst = UsuarioGastos(
         cleaningAmount: 0,
+        cleaningDescription: "",
         foodAmount: 0,
+        foodDescription: "",
         idexp: "exp" + uid + "0",
         studyAmount: 0,
+        studyDescription: "",
         totalAmount: 0,
         transportAmount: 0,
-        variousAmount: 0);
+        transportDescription: "",
+        variousAmount: 0,
+        variousDescription: "");
     FirebaseFirestore.instance.collection('usuarios').doc(uid).set({
       'user_email': usr.correo,
       'user_id': uid,
@@ -114,12 +119,17 @@ class AuthServices {
         .doc("exp$uid" + "0")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": usrgst.idexp,
       "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -128,12 +138,17 @@ class AuthServices {
         .doc("exp$uid" + "1")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "1",
-      "user_studyAmount": usrgst.studyAmount,
+            "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -142,12 +157,17 @@ class AuthServices {
         .doc("exp$uid" + "2")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "2",
-      "user_studyAmount": usrgst.studyAmount,
+           "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -156,12 +176,17 @@ class AuthServices {
         .doc("exp$uid" + "3")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "3",
-      "user_studyAmount": usrgst.studyAmount,
+           "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -170,12 +195,17 @@ class AuthServices {
         .doc("exp$uid" + "4")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "4",
-      "user_studyAmount": usrgst.studyAmount,
+           "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -184,12 +214,17 @@ class AuthServices {
         .doc("exp$uid" + "5")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "5",
-      "user_studyAmount": usrgst.studyAmount,
+           "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -198,12 +233,17 @@ class AuthServices {
         .doc("exp$uid" + "6")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "6",
-      "user_studyAmount": usrgst.studyAmount,
+            "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -212,12 +252,17 @@ class AuthServices {
         .doc("exp$uid" + "7")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "7",
-      "user_studyAmount": usrgst.studyAmount,
+           "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -226,12 +271,17 @@ class AuthServices {
         .doc("exp$uid" + "8")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "8",
-      "user_studyAmount": usrgst.studyAmount,
+           "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -240,12 +290,17 @@ class AuthServices {
         .doc("exp$uid" + "9")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "9",
-      "user_studyAmount": usrgst.studyAmount,
+           "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -254,12 +309,17 @@ class AuthServices {
         .doc("exp$uid" + "10")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "10",
-      "user_studyAmount": usrgst.studyAmount,
+            "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     FirebaseFirestore.instance
         .collection("usuarios")
@@ -268,12 +328,17 @@ class AuthServices {
         .doc("exp$uid" + "11")
         .set({
       "user_cleaningAmount": usrgst.cleaningAmount,
+      "user_cleaningDescription": usrgst.cleaningDescription,
       "user_foodAmount": usrgst.foodAmount,
+      "user_foodDescription": usrgst.foodDescription,
       "user_idexp": "exp$uid" + "11",
-      "user_studyAmount": usrgst.studyAmount,
+         "user_studyAmount": usrgst.studyAmount,
+      "user_studyDescription": usrgst.studyDescription,
       "user_totalAmount": usrgst.totalAmount,
       "user_transportAmount": usrgst.transportAmount,
-      "user_variousAmount": usrgst.variousAmount
+      "user_transportDescription": usrgst.transportDescription,
+      "user_variousAmount": usrgst.variousAmount,
+      "user_variousDescription": usrgst.variousDescription,
     });
     return;
   }
@@ -287,12 +352,17 @@ class AuthServices {
         .doc("exp$uid$Date")
         .set({
       "user_cleaningAmount": gastos.cleaningAmount,
+      "user_cleaningDescription": gastos.cleaningDescription,
       "user_foodAmount": gastos.foodAmount,
+      "user_foodDescription": gastos.foodDescription,
       "user_idexp": "exp" + uid + Date,
-      "user_studyAmount": gastos.studyAmount,
+           "user_studyAmount": gastos.studyAmount,
+      "user_studyDescription": gastos.studyDescription,
       "user_totalAmount": gastos.totalAmount,
       "user_transportAmount": gastos.transportAmount,
-      "user_variousAmount": gastos.variousAmount
+      "user_transportDescription": gastos.transportDescription,
+      "user_variousAmount": gastos.variousAmount,
+      "user_variousDescription": gastos.variousDescription,
     });
     return;
   }

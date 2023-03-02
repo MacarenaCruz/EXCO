@@ -18,13 +18,18 @@ class InformationPage extends StatefulWidget {
 List<UsuarioGastos> listgst = [];
 
 UsuarioGastos gst = UsuarioGastos(
-    cleaningAmount: 0,
-    foodAmount: 0,
-    idexp: "",
-    studyAmount: 0,
-    totalAmount: 0,
-    transportAmount: 0,
-    variousAmount: 0);
+     cleaningAmount: 0,
+      cleaningDescription: "",
+      foodAmount: 0,
+      foodDescription: "",
+      idexp: "",
+      studyAmount: 0,
+      studyDescription: "",
+      totalAmount: 0,
+      transportAmount: 0,
+      transportDescription: "",
+      variousAmount: 0,
+      variousDescription: "");
 
 class _InformationPageState extends State<InformationPage> {
   String yeardata = "0";
