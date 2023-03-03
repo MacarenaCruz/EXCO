@@ -145,24 +145,24 @@ class _HomePageState extends State<HomePage> {
           .doc("exp" + mainProvider.token + yeardata)
           .update((type == "limpieza")
               ? {
-                  'user_cleaningDescription': num.parse(newValue),
+                  'user_cleaningDescription': newValue,
                 }
               : (type == "comida")
                   ? {
-                      'user_foodDescription': num.parse(newValue),
+                      'user_foodDescription': newValue,
                     }
                   : (type == "estudio")
                       ? {
-                          'user_studyDescription': num.parse(newValue),
+                          'user_studyDescription': newValue,
                         }
                       : (type == "transporte")
                           ? {
-                              'user_transportDescription': num.parse(newValue),
+                              'user_transportDescription': newValue,
                             }
                           : (type == "varios")
                               ? {
                                   'user_variousDescription':
-                                      num.parse(newValue),
+                                      newValue,
                                 }
                               : {});
     }
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                       onChanged: (value) {
                          setState(() {
                           if (type != "reporte" && value != "") {
-                            _editDescriptionGastos(type, value);
+                            _editParamGastos(type, value);
                           }
                         });
                       },
